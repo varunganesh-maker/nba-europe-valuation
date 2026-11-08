@@ -1,14 +1,16 @@
-CREATE SEQUENCE nba_team START 1;
-CREATE TABLE nba_teams (
-    team_id INTEGER PRIMARY KEY DEFAULT nextval('nba_team'),
+DROP TABLE IF EXISTS teams;
+DROP SEQUENCE IF EXISTS team_id_seq;
+CREATE SEQUENCE team_id_seq START 1;
+CREATE TABLE teams (
+    team_id INTEGER PRIMARY KEY DEFAULT nextval('team_id_seq'),
     team_name VARCHAR NOT NULL UNIQUE,
-    city VARCHAR NOT NULL,
+    league VARCHAR NOT NULL,
     conference VARCHAR,
     founded INTEGER
 );
-INSERT INTO nba_teams (team_name, city, conference, founded) VALUES
-('Los Angeles Lakers', 'Los Angeles', 'Western', 1947),
-('Boston Celtics', 'Boston', 'Eastern', 1946),
-('Chicago Bulls', 'Chicago', 'Eastern', 1966),
-('Golden State Warriors', 'San Francisco', 'Western', 1946),
-('Miami Heat', 'Miami', 'Eastern', 1988);
+INSERT INTO teams (team_name, league, conference, founded) VALUES
+('Los Angeles Lakers', 'NBA', 'Western', 1947),
+('Boston Celtics', 'NBA', 'Eastern', 1946),
+('Chicago Bulls', 'NBA', 'Eastern', 1966),
+('Golden State Warriors', 'NBA', 'Western', 1946),
+('Miami Heat', 'NBA', 'Eastern', 1988);
